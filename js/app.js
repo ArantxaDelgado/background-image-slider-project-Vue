@@ -13,7 +13,9 @@ Vue.createApp({
       index: 0
     }
   },
-  methods: {
+/* mine => need to change in HTML :style (backgroundImage) to `url(./img/${image}.jpeg)`
+methods: {
+
     slider(value) {
       this.index += value;
 
@@ -26,6 +28,35 @@ Vue.createApp({
       }
 
       this.image = pictures[this.index];
+    }
+  } */
+
+  methods: {
+    prevImage() {
+      // TODO: Decrementar el index
+      this.index--
+      // TODO-2: Mirar si hemos llegado a 0 y entonces...
+      if (this.index < 0) {
+        this.index = pictures.length-1;        
+      }
+    },
+
+    nextImage() {
+      // TODO: Incrementar el index
+      this.index++
+      // TODO-2: Mirar si hemos llegado al número máximo de elementos del array y entonces...
+      if (this.index >= pictures.length) {
+        this.index = 0;
+      }
+
+    }
+  },
+  computed: {
+    getUrl() {
+      return `url(../img/${pictures[this.index]}.jpeg)`;
+
+
+      // tenemos que devolver un string a la ruta de la foto actual. Por ejemplo, la ruta de la primera foto es '../img/pictures[0]'
     }
   }
 }).mount("#app");
