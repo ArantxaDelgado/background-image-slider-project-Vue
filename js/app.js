@@ -36,24 +36,32 @@ methods: {
       // TODO: Decrementar el index
       this.index--
       // TODO-2: Mirar si hemos llegado a 0 y entonces...
-      if (this.index < 0) {
+
+     /* if (this.index < 0) {
         this.index = pictures.length-1;        
-      }
+      } */
     },
 
     nextImage() {
       // TODO: Incrementar el index
       this.index++
       // TODO-2: Mirar si hemos llegado al número máximo de elementos del array y entonces...
-      if (this.index >= pictures.length) {
+
+      /* if (this.index >= pictures.length) {
         this.index = 0;
-      }
+      } */
 
     }
   },
   computed: {
     getUrl() {
-      return `url(../img/${pictures[this.index]}.jpeg)`;
+      /* Module => 20/3 = 18
+                    2 =>module
+*/
+      //using module instead of ifs
+      const realIndex = Math.abs(this.index) % pictures.length;
+
+      return `url(../img/${pictures[realIndex]}.jpeg)`;
 
 
       // tenemos que devolver un string a la ruta de la foto actual. Por ejemplo, la ruta de la primera foto es '../img/pictures[0]'
